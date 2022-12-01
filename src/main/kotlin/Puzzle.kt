@@ -7,7 +7,7 @@ abstract class Puzzle<T, R>(val day: Int) {
 
     abstract val solutions: Collection<Solution<T, R>>
 
-    fun solve(solution: Solution<T, R>, input: String) = solution(parse(input.lineSequence()))
+    fun solve(solution: Solution<T, R>, input: String) = solution(parse(input.trimIndent().lineSequence()))
 
     fun solve(solution: Solution<T, R>, input: T) = solution(input)
 }
