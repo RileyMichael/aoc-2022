@@ -2,13 +2,15 @@ package com.github.rileymichael
 
 import com.github.rileymichael.day1.Day1
 import com.github.rileymichael.day2.Day2
+import com.github.rileymichael.day3.Day3
 import kotlin.time.measureTimedValue
 
 fun main() {
     // todo: reflection to get rid of this.. arg to run spcific day..
     val days = listOf(
         Day1,
-        Day2
+        Day2,
+        Day3
     )
     days.lastOrNull()?.run { solve() }
 }
