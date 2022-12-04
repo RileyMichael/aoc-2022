@@ -3,6 +3,7 @@ package com.github.rileymichael
 import com.github.rileymichael.day1.Day1
 import com.github.rileymichael.day2.Day2
 import com.github.rileymichael.day3.Day3
+import com.github.rileymichael.day4.Day4
 import kotlin.time.measureTimedValue
 
 fun main() {
@@ -10,7 +11,8 @@ fun main() {
     val days = listOf(
         Day1,
         Day2,
-        Day3
+        Day3,
+        Day4
     )
     days.lastOrNull()?.run { solve() }
 }
