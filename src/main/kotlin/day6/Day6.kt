@@ -2,11 +2,15 @@ package com.github.rileymichael.day6
 
 import com.github.rileymichael.Puzzle
 
-object Day6: Puzzle<Sequence<Set<Char>>, Int>(6) {
-    private const val windowSize = 4
-    override fun parse(input: Sequence<String>) = input.single().windowedSequence(windowSize) { it.toSet()}
+object Day6 : Puzzle<String, Int>(6) {
+    override fun parse(input: Sequence<String>) = input.single()
 
-    override val solutions = listOf(::part1)
+    override val solutions = listOf(::part1, ::part2)
 
-    fun part1(input: Sequence<Set<Char>>) = input.indexOfFirst { it.size == windowSize } + windowSize
+    private fun detect(buffer: String, windowSize: Int) = buffer
+        .windowedSequence(windowSize) { it.toSet() }
+        .indexOfFirst { it.size == windowSize } + windowSize
+
+    fun part1(input: String) = detect(input, 4)
+    fun part2(input: String) = detect(input, 14)
 }
