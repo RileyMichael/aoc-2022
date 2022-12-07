@@ -4,17 +4,15 @@ import com.github.rileymichael.Puzzle
 import com.github.rileymichael.chunkedBy
 
 
-object Day1 : Puzzle<Sequence<Int>, Int>(1) {
+object Day1 : Puzzle<Sequence<Int>>(1) {
     override fun parse(input: Sequence<String>): Sequence<Int> = input
         .chunkedBy(String::isBlank)
         .map { it.sumOf(String::toInt) }
         .sortedDescending()
 
-    override val solutions = listOf(::part1, ::part2)
+    override fun part1(input: Sequence<Int>) = input.first()
 
-    fun part1(input: Sequence<Int>): Int = input.first()
-
-    fun part2(input: Sequence<Int>): Int = input.take(3).sum()
+    override fun part2(input: Sequence<Int>) = input.take(3).sum()
 
 }
 

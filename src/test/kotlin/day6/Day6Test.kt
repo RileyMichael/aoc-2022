@@ -1,5 +1,6 @@
 package com.github.rileymichael.day6
 
+import com.github.rileymichael.day5.Day5
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
@@ -18,6 +19,10 @@ class Day6Test : StringSpec({
         }
     }
 
+    "part 1 solution" {
+        Day6.solve(Day6::part1) shouldBe 1531
+    }
+
     val partTwoInput = listOf(
         "mjqjpqmgbljsphdztnvjfqwrcgsmlb" to 19,
         "bvwbjplbgvbhsrlpgdmjqwftvncz" to 23,
@@ -30,5 +35,9 @@ class Day6Test : StringSpec({
         "part 2 example $index" {
             Day6.solve(Day6::part2, pair.first) shouldBe pair.second
         }
+    }
+
+    "part 2 solution" {
+        Day6.solve(Day6::part2) shouldBe 2518
     }
 })

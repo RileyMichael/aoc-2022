@@ -1,7 +1,6 @@
 package com.github.rileymichael.day5
 
 import com.github.rileymichael.Puzzle
-import com.github.rileymichael.Solution
 import com.github.rileymichael.chunkedBy
 
 
@@ -15,7 +14,7 @@ private fun String.parseStep() = pattern.matchEntire(this)?.destructured?.let { 
     Triple(amount.toInt(), from.toInt(), to.toInt())
 }
 
-object Day5 : Puzzle<Instructions, String>(5) {
+object Day5 : Puzzle<Instructions>(5) {
     override fun parse(input: Sequence<String>): Instructions {
         val (drawing, procedure) = input.chunkedBy(String::isBlank).toList()
         val indexes = drawing.last().mapIndexedNotNull { index, c -> if (c.isDigit()) index else null }
@@ -32,9 +31,7 @@ object Day5 : Puzzle<Instructions, String>(5) {
         return stacks to steps
     }
 
-    override val solutions: Collection<Solution<Instructions, String>> = listOf(::part1, ::part2)
-
-    fun part1(input: Instructions) = input.let { (stacks, steps) ->
+    override fun part1(input: Instructions) = input.let { (stacks, steps) ->
         steps.forEach { (amount, from, to) ->
             repeat(amount) {
                 val removed = stacks[from - 1].removeLast()
@@ -44,7 +41,7 @@ object Day5 : Puzzle<Instructions, String>(5) {
         stacks.map(Stack::last).joinToString("")
     }
 
-    fun part2(input: Instructions) = input.let { (stacks, steps) ->
+    override fun part2(input: Instructions) = input.let { (stacks, steps) ->
         steps.forEach { (amount, from, to) ->
             val removed = stacks[from - 1].takeLast(amount)
             repeat(amount) {

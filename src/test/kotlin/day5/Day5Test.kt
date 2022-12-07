@@ -1,5 +1,6 @@
 package com.github.rileymichael.day5
 
+import com.github.rileymichael.day2.Day2
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
@@ -20,7 +21,15 @@ class Day5Test: StringSpec({
         Day5.solve(Day5::part1, input) shouldBe "CMZ"
     }
 
+    "part 1 solution" {
+        Day5.solve(Day5::part1) shouldBe "ZSQVCCJLL"
+    }
+
     "part 2 example" {
         Day5.solve(Day5::part2, input) shouldBe "MCD"
+    }
+
+    "part 2 solution" {
+        Day5.solve(Day5::part2) shouldBe "QZFJRWHGS"
     }
 })

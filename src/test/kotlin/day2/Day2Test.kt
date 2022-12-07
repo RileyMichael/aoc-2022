@@ -14,7 +14,15 @@ class Day2Test : StringSpec({
         Day2.solve(Day2::part1, input) shouldBe 15
     }
 
+    "part 1 solution" {
+        Day2.solve(Day2::part1) shouldBe 12645
+    }
+
     "part 2 example" {
         Day2.solve(Day2::part2, input) shouldBe 12
+    }
+
+    "part 2 solution" {
+        Day2.solve(Day2::part2) shouldBe 11756
     }
 })

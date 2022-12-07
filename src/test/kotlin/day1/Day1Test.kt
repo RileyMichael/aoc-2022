@@ -25,7 +25,15 @@ class Day1Test : StringSpec({
         Day1.solve(Day1::part1, input) shouldBe 24000
     }
 
+    "part 1 solution" {
+        Day1.solve(Day1::part1) shouldBe 68787
+    }
+
     "part 2 example" {
         Day1.solve(Day1::part2, input) shouldBe 45000
+    }
+
+    "part 2 solution" {
+        Day1.solve(Day1::part2) shouldBe 198041
     }
 })

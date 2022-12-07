@@ -33,20 +33,19 @@ private fun Char.move() = when (this) {
 data class Round(val opponentMove: Move, val instruction: Char)
 typealias StrategyGuide = Sequence<Round>
 
-object Day2 : Puzzle<StrategyGuide, Int>(2) {
+object Day2 : Puzzle<StrategyGuide>(2) {
     override fun parse(input: Sequence<String>) = input.map {
         val (left, right) = it.split(" ")
         Round(left.first().move(), right.first())
     }
 
-    override val solutions = listOf(::part1, ::part2)
 
-    fun part1(input: StrategyGuide) = input.sumOf { round ->
+    override fun part1(input: StrategyGuide) = input.sumOf { round ->
         val move = round.instruction.move()
         (move against round.opponentMove).score + move.score
     }
 
-    fun part2(input: StrategyGuide) = input.sumOf { round ->
+    override fun part2(input: StrategyGuide) = input.sumOf { round ->
         val move = when (round.instruction) {
             'Z' -> round.opponentMove.beatBy
             'Y' -> round.opponentMove

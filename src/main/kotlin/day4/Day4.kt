@@ -21,7 +21,7 @@ private fun String.toAssignment() = split("-", limit = 2)
     .map(String::toInt)
     .run { first()..last() }
 
-object Day4 : Puzzle<Sequence<AssignmentPair>, Int>(4) {
+object Day4 : Puzzle<Sequence<AssignmentPair>>(4) {
     override fun parse(input: Sequence<String>) = input.map {
         val assignments = it.split(",", limit = 2)
         assignments.map(String::toAssignment).run {
@@ -29,9 +29,7 @@ object Day4 : Puzzle<Sequence<AssignmentPair>, Int>(4) {
         }
     }
 
-    override val solutions = listOf(::part1, ::part2)
+    override fun part1(input: Sequence<AssignmentPair>) = input.count(AssignmentPair::fullyContained)
 
-    fun part1(input: Sequence<AssignmentPair>) = input.count(AssignmentPair::fullyContained)
-
-    fun part2(input: Sequence<AssignmentPair>) = input.count(AssignmentPair::overlap)
+    override fun part2(input: Sequence<AssignmentPair>) = input.count(AssignmentPair::overlap)
 }

@@ -21,9 +21,9 @@ fun main() {
     days.lastOrNull()?.run { solve() }
 }
 
-private fun <T, R> Puzzle<T, R>.solve() {
-    println("Solving day $day")
-    solutions.forEachIndexed { index, solution ->
+private fun <T> Puzzle<T>.solve() {
+    println("----Day $day----")
+    listOf(::part1, ::part2).forEachIndexed { index, solution ->
         val (parse, answer) = solveTimed(solution)
         println(
             """

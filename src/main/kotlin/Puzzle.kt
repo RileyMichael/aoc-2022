@@ -3,21 +3,26 @@ package com.github.rileymichael
 import kotlin.time.TimedValue
 import kotlin.time.measureTimedValue
 
-typealias Solution<T, R> = (input: T) -> R
+typealias Solution<T> = (T) -> Any
 
-abstract class Puzzle<T, R>(val day: Int) {
+abstract class Puzzle<T>(val day: Int) {
+    fun solveTimed(solution: Solution<T>): Pair<TimedValue<T>, TimedValue<Any>> {
+        val input = this::class.java.classLoader.getResourceAsStream("Day$day.txt")
+        requireNotNull(input) { "Input for day $day not found" }
+        input.bufferedReader().useLines {
+            val parse = measureTimedValue { parse(it) }
+            val answer = measureTimedValue { solution(parse.value) }
+            return parse to answer
+        }
+    }
+
+    fun solve(solution: Solution<T>) = solveTimed(solution).second.value
+
+    fun solve(solution: Solution<T>, input: String) = solution(parse(input.trimIndent().lineSequence()))
+
     abstract fun parse(input: Sequence<String>): T
 
-    abstract val solutions: Collection<Solution<T, R>>
+    abstract fun part1(input: T): Any
 
-    fun solve(solution: Solution<T, R>, input: String) = solution(parse(input.trimIndent().lineSequence()))
-
-    fun solveTimed(solution: Solution<T, R>): Pair<TimedValue<T>, TimedValue<R>> =
-        this::class.java.classLoader.getResourceAsStream("Day$day.txt")?.let { input ->
-            input.bufferedReader().useLines {
-                val parse = measureTimedValue { parse(it) }
-                val answer = measureTimedValue { solution(parse.value) }
-                return parse to answer
-            }
-        } ?: error("Input for day $day not found")
+    abstract fun part2(input: T): Any
 }

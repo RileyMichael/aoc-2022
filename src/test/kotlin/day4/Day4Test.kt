@@ -3,7 +3,7 @@ package com.github.rileymichael.day4
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-class Day4Test: StringSpec({
+class Day4Test : StringSpec({
     val input = """
         2-4,6-8
         2-3,4-5
@@ -17,7 +17,15 @@ class Day4Test: StringSpec({
         Day4.solve(Day4::part1, input) shouldBe 2
     }
 
+    "part 1 solution" {
+        Day4.solve(Day4::part1) shouldBe 513
+    }
+
     "part 2 example" {
         Day4.solve(Day4::part2, input) shouldBe 4
+    }
+
+    "part 2 solution" {
+        Day4.solve(Day4::part2) shouldBe 878
     }
 })
