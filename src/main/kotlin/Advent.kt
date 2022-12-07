@@ -24,18 +24,14 @@ fun main() {
 private fun <T, R> Puzzle<T, R>.solve() {
     println("Solving day $day")
     solutions.forEachIndexed { index, solution ->
-        val input = this::class.java.classLoader.getResourceAsStream("Day$day.txt")
-        requireNotNull(input) { "Input for day $day not found" }
-        input.bufferedReader().useLines {
-            val parse = measureTimedValue { parse(it) }
-            val answer = measureTimedValue { solve(solution, parse.value) }
-            println("""
+        val (parse, answer) = solveTimed(solution)
+        println(
+            """
                 - Part ${index + 1} -
                   parsed in: ${parse.duration}
                   solved in: ${answer.duration}
                   solution: ${answer.value}
             """.trimIndent()
-            )
-        }
+        )
     }
 }

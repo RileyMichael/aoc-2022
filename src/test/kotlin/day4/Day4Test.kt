@@ -1,6 +1,5 @@
-package day4
+package com.github.rileymichael.day4
 
-import com.github.rileymichael.day4.Day4
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
