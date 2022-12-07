@@ -5,6 +5,7 @@ import com.github.rileymichael.day2.Day2
 import com.github.rileymichael.day3.Day3
 import com.github.rileymichael.day4.Day4
 import com.github.rileymichael.day5.Day5
+import com.github.rileymichael.day6.Day6
 import kotlin.time.measureTimedValue
 
 fun main() {
@@ -15,6 +16,7 @@ fun main() {
         Day3,
         Day4,
         Day5,
+        Day6,
     )
     days.lastOrNull()?.run { solve() }
 }
