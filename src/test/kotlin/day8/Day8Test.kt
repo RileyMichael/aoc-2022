@@ -16,4 +16,8 @@ class Day8Test : StringSpec({
     "part 1 example" {
         Day8.solve(Day8::part1, input) shouldBe 21
     }
+
+    "part 2 example" {
+        Day8.solve(Day8::part2, input) shouldBe 8
+    }
 })

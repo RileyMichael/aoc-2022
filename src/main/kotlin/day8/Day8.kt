@@ -19,9 +19,14 @@ data class HeightMap(private val grid: List<List<Int>>) {
         fun visible(others: List<Point>) = others.all {
             this@HeightMap[it] < this@HeightMap[this]
         }
-        fun left() = (0 until x).map { Point(it, y) }
-        fun right() = (x + 1..width).map { Point(it, y)}
-        fun up() = (0 until y).map { Point(x, it) }
+
+        fun viewDistance(others: List<Point>) = minOf(others.takeWhile {
+            this@HeightMap[it] < this@HeightMap[this]
+        }.size + 1, others.size) // we need to account for the blocked tree
+
+        fun left() = (x - 1 downTo 0).map { Point(it, y) }
+        fun right() = (x + 1..width).map { Point(it, y) }
+        fun up() = (y - 1 downTo 0).map { Point(x, it) }
         fun down() = (y + 1..height).map { Point(x, it) }
     }
 }
@@ -35,7 +40,10 @@ object Day8 : Puzzle<HeightMap>(8) {
         it.visible(it.left()) || it.visible(it.right()) || it.visible(it.up()) || it.visible(it.down())
     }
 
-    override fun part2(input: HeightMap): Any {
-        TODO("Not yet implemented")
+    override fun part2(input: HeightMap) = input.points.flatten().maxOf {
+        it.viewDistance(it.up()) *
+        it.viewDistance(it.left()) *
+        it.viewDistance(it.right()) *
+        it.viewDistance(it.down())
     }
 }
