@@ -40,7 +40,14 @@ object Day10 : Puzzle<Sequence<Instruction>>(10) {
         }
     }.sum()
 
-    override fun part2(input: Sequence<Instruction>): Any {
-        TODO("Not yet implemented")
-    }
+    override fun part2(input: Sequence<Instruction>) = buildString(41 * 6) {
+        cpu(input).forEachIndexed { idx, register ->
+            val pos = idx % 40
+            when (pos) {
+                in (register - 1)..(register + 1) -> append("#")
+                else -> append(".")
+            }
+            if (pos == 39) append("\n")
+        }
+    }.trim()
 }

@@ -34,10 +34,11 @@ private fun <T> Puzzle<T>.solve() {
         val (parse, answer) = solveTimed(solution)
         println(
             """
-                - Part ${index + 1} -
-                  parsed in: ${parse.duration}
-                  solved in: ${answer.duration}
-                  solution: ${answer.value}
+- Part ${index + 1} -
+parsed in: ${parse.duration}
+solved in: ${answer.duration}
+solution: 
+${answer.value}
             """.trimIndent()
         )
     }
