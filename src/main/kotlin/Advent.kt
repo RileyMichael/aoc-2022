@@ -1,6 +1,7 @@
 package com.github.rileymichael
 
 import com.github.rileymichael.day1.Day1
+import com.github.rileymichael.day10.Day10
 import com.github.rileymichael.day2.Day2
 import com.github.rileymichael.day3.Day3
 import com.github.rileymichael.day4.Day4
@@ -9,7 +10,6 @@ import com.github.rileymichael.day6.Day6
 import com.github.rileymichael.day7.Day7
 import com.github.rileymichael.day8.Day8
 import com.github.rileymichael.day9.Day9
-import kotlin.time.measureTimedValue
 
 fun main() {
     // todo: reflection to get rid of this.. arg to run spcific day..
@@ -23,6 +23,7 @@ fun main() {
         Day7,
         Day8,
         Day9,
+        Day10,
     )
     days.lastOrNull()?.run { solve() }
 }
